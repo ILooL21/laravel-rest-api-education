@@ -36,7 +36,11 @@ class OptionController extends Controller
             ];
             return response()->json($response, 400);
         } else {
-            $option->is_correct = $request->is_correct;
+            if ($request->is_correct == 1) {
+                $option->is_correct = $request->is_correct;
+            } else {
+                $option->is_correct = 0;
+            }
         }
 
         if (!$request->question_id) {
@@ -158,7 +162,11 @@ class OptionController extends Controller
         }
 
         if ($request->is_correct) {
-            $option->is_correct = $request->is_correct;
+            if ($request->is_correct == 1) {
+                $option->is_correct = $request->is_correct;
+            } else {
+                $option->is_correct = 0;
+            }
         }
 
         if ($request->question_id) {
